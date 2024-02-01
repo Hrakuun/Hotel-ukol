@@ -16,8 +16,7 @@ public class ListOfBookings {
                 System.out.println("Datum začátku rezervaci musí být před datem konce");
             }
         } else {
-            System.out.println("Počet hostů převyšuje kapacitu lůžek");
+            System.out.println("Neplatný počet hostů");
         }
     }
-
 }

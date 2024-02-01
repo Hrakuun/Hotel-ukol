@@ -21,6 +21,45 @@ public class Booking {
     }
 
 
+//region get/set
+    public Room getRoom() {
+        return room;
+    }
 
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 
+    public List<Guest> getGuests() {
+        return guests;
+    }
+
+    public void setGuests(List<Guest> guests) {
+        this.guests = guests;
+    }
+
+    public LocalDate getReservationStart() {
+        return reservationStart;
+    }
+
+    public void setReservationStart(LocalDate reservationStart) {
+        this.reservationStart = reservationStart;
+    }
+
+    public LocalDate getReservationEnd() {
+        return reservationEnd;
+    }
+
+    public void setReservationEnd(LocalDate reservationEnd) {
+        this.reservationEnd = reservationEnd;
+    }
+
+    public TypeOfVacation getTypeOfVacation() {
+        return typeOfVacation;
+    }
+
+    public void setTypeOfVacation(TypeOfVacation typeOfVacation) {
+        this.typeOfVacation = typeOfVacation;
+    }
+//    endregion
 }
