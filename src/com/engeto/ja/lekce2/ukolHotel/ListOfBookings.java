@@ -9,7 +9,7 @@ public class ListOfBookings {
 
 
     public void createBooking(Room room, List<Guest> guests, LocalDate reservationStart, LocalDate reservationEnd, TypeOfVacation typeOfVacation){
-        if(room.getBedCount()>=guests.size()){
+        if((room.getBedCount()>=guests.size()) && (guests.size() > 0)){
             if(reservationStart.isBefore(reservationEnd)){
                 bookings.add(new Booking(room,guests,reservationStart,reservationEnd,typeOfVacation));
             } else {
