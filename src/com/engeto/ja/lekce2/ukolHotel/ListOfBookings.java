@@ -7,16 +7,20 @@ public class ListOfBookings {
 
     private List<Booking> bookings;
 
-
     public void createBooking(Room room, List<Guest> guests, LocalDate reservationStart, LocalDate reservationEnd, TypeOfVacation typeOfVacation){
-        if((room.getBedCount()>=guests.size()) && (guests.size() > 0)){
-            if(reservationStart.isBefore(reservationEnd)){
-                bookings.add(new Booking(room,guests,reservationStart,reservationEnd,typeOfVacation));
-            } else {
-                System.out.println("Datum začátku rezervaci musí být před datem konce");
-            }
-        } else {
-            System.out.println("Neplatný počet hostů");
+
+        if(guests.isEmpty()) {
+            System.out.println("Nezadán host");
+            return;
         }
+        if(room.getBedCount() < guests.size()) {
+            System.out.println("Počet hostů převyšuje počet lůžek");
+            return;
+        }
+        if(reservationStart.isAfter(reservationEnd)) {
+            System.out.println("Datum začátku rezervaci musí být před datem konce");
+            return;
+        }
+        bookings.add(new Booking(room,guests,reservationStart,reservationEnd,typeOfVacation));
     }
 }

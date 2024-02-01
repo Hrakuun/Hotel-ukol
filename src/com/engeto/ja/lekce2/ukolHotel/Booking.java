@@ -12,7 +12,7 @@ public class Booking {
     private LocalDate reservationEnd;
     private TypeOfVacation typeOfVacation;
 
-    public Booking(Room room, List<Guest> guests,LocalDate reservationStart, LocalDate reservationEnd, TypeOfVacation typeOfVacation){
+    public Booking(Room room, List<Guest> guests, LocalDate reservationStart, LocalDate reservationEnd, TypeOfVacation typeOfVacation) {
         this.room = room;
         this.guests = new ArrayList<>(guests);
         this.reservationStart = reservationStart;
@@ -21,7 +21,7 @@ public class Booking {
     }
 
 
-//region get/set
+    //region get/set
     public Room getRoom() {
         return room;
     }
