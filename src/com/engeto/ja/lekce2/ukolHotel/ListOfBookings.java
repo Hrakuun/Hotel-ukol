@@ -50,7 +50,6 @@ public class ListOfBookings {
                     isRoomAvailable = false;
                 }
             }
-
         }
         return isRoomAvailable;
     }

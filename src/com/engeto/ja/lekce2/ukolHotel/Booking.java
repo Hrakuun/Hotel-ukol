@@ -1,6 +1,7 @@
 package com.engeto.ja.lekce2.ukolHotel;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class Booking {
     private LocalDate reservationStart;
     private LocalDate reservationEnd;
     private TypeOfVacation typeOfVacation;
+    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd. MM. yyyy");
 
     public Booking(Room room, List<Guest> guests, LocalDate reservationStart, LocalDate reservationEnd, TypeOfVacation typeOfVacation) {
         this.room = room;
@@ -22,9 +24,9 @@ public class Booking {
 
     public void printBooking(){
         for(Guest guest : guests){
-            System.out.print(guest + ", ");
+            System.out.print(guest.getFirstName() + " " + guest.getSurname() + ", ");
         }
-        System.out.println("pokoj č. " + room.getRoomNo() + ", od " + reservationStart + " do " + reservationEnd + ", cena: " + room.getPricePerNight() + " Kč");
+        System.out.println("pokoj č. " + room.getRoomNo() + ", od " + reservationStart.format(dateFormat) + " do " + reservationEnd.format(dateFormat) + ", cena: " + room.getPricePerNight() + " Kč");
     }
 
     //region get/set

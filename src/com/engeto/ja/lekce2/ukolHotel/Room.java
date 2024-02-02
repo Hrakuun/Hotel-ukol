@@ -24,9 +24,22 @@ public class Room {
         this.pricePerNight = pricePerNight;
     }
 
+    private String seaViewString(){
+        if(hasSeaView)
+            return "s výhledem na moře, ";
+        else
+            return "bez výhledu na moře, ";
+    }
+    private String balconyString(){
+        if(hasBalcony)
+            return "s balkonem, ";
+        else
+            return "bez balkónu, ";
+    }
+
     @Override
     public String toString() {
-        return "pokoj č. " + roomNo;
+        return "Pokoj č. " + roomNo + ", počet lůžek: " + bedCount + ", " + seaViewString() + balconyString() + "cena za noc: " + pricePerNight + " Kč";
     }
 
     //    region get/set
