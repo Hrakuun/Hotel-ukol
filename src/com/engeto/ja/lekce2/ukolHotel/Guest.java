@@ -8,7 +8,7 @@ public class Guest {
     private String firstName;
     private String surname;
     private LocalDate birthdate;
-    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd. MM. yyyy");
+    private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd. MM. yyyy");
 
     public Guest(String firstName, String surname, LocalDate birthdate) {
         this.firstName = firstName;

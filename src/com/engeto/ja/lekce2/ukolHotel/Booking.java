@@ -12,7 +12,7 @@ public class Booking {
     private LocalDate reservationStart;
     private LocalDate reservationEnd;
     private TypeOfVacation typeOfVacation;
-    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd. MM. yyyy");
+    private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd. MM. yyyy");
 
     public Booking(Room room, List<Guest> guests, LocalDate reservationStart, LocalDate reservationEnd, TypeOfVacation typeOfVacation) {
         this.room = room;
