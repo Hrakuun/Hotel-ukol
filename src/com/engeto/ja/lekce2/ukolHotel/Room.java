@@ -24,6 +24,11 @@ public class Room {
         this.pricePerNight = pricePerNight;
     }
 
+    @Override
+    public String toString() {
+        return "pokoj č. " + roomNo;
+    }
+
     //    region get/set
     public int getBedCount() {
         return bedCount;
@@ -56,6 +61,14 @@ public class Room {
     public void setPricePerNight(BigDecimal pricePerNight) {
         this.pricePerNight = pricePerNight;
     }
-//    endregion
+
+    public int getRoomNo() {
+        return roomNo;
+    }
+
+    public void setRoomNo(int roomNo) {
+        this.roomNo = roomNo;
+    }
+    //    endregion
 
 }

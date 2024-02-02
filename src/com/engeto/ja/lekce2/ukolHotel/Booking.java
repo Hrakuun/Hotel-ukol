@@ -20,6 +20,12 @@ public class Booking {
         this.typeOfVacation = typeOfVacation;
     }
 
+    public void printBooking(){
+        for(Guest guest : guests){
+            System.out.print(guest + ", ");
+        }
+        System.out.println("pokoj č. " + room.getRoomNo() + ", od " + reservationStart + " do " + reservationEnd + ", cena: " + room.getPricePerNight() + " Kč");
+    }
 
     //region get/set
     public Room getRoom() {

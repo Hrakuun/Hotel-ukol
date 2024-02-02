@@ -14,6 +14,11 @@ public class Guest {
         this.birthdate = birthdate;
     }
 
+    @Override
+    public String toString() {
+        return firstName + " " + surname;
+    }
+
     //region get/set
     public String getFirstName() {
         return firstName;
