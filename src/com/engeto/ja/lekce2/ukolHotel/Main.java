@@ -26,6 +26,7 @@ public class Main {
         ListOfBookings listOfBookings = new ListOfBookings();
         listOfBookings.createBooking(room1,Arrays.asList(new Guest[]{adela}),LocalDate.of(2021,7,19),LocalDate.of(2021,7,26),TypeOfVacation.RECREATION);
         listOfBookings.createBooking(room3,Arrays.asList(new Guest[]{adela,jan}),LocalDate.of(2021,9,1),LocalDate.of(2021,9,14),TypeOfVacation.RECREATION);
+        listOfBookings.createBooking(room2,Arrays.asList(new Guest[]{jan}));
 
         listOfBookings.printListOfBookings();
     }

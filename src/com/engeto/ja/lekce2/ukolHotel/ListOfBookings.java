@@ -1,6 +1,8 @@
 package com.engeto.ja.lekce2.ukolHotel;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,28 @@ public class ListOfBookings {
         bookings.add(new Booking(room, guests, reservationStart, reservationEnd, typeOfVacation));
 
     }
+    public void createBooking(Room room, List<Guest> guests) {
+        LocalDate reservationStart = LocalDate.now();
+        LocalDate reservationEnd = reservationStart.plusDays(6);
+        TypeOfVacation typeOfVacation = TypeOfVacation.RECREATION;
+
+        if (guests.isEmpty()) {
+            System.out.println("Nezadán host");
+            return;
+        }
+        if (room.getBedCount() < guests.size()) {
+            System.out.println("Počet hostů převyšuje počet lůžek");
+            return;
+        }
+
+        if (!isRoomAvailable(room, reservationStart, reservationEnd)) {
+            System.out.println("Pokoj je v tomto termínu obsazen");
+            return;
+        }
+        bookings.add(new Booking(room, guests, reservationStart, reservationEnd, typeOfVacation));
+
+    }
+
 
     public void printListOfBookings() {
         for (Booking booking : bookings) {
