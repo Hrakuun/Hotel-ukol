@@ -28,6 +28,9 @@ public class Booking {
         }
         System.out.println("pokoj č. " + room.getRoomNo() + ", od " + reservationStart.format(dateFormat) + " do " + reservationEnd.format(dateFormat) + ", cena: " + room.getPricePerNight() + " Kč");
     }
+    public int getNumberOfGuests(){
+        return guests.size();
+    }
 
     //region get/set
     public Room getRoom() {

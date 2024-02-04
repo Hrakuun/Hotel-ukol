@@ -1,16 +1,14 @@
 package com.engeto.ja.lekce2.ukolHotel;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListOfBookings {
+public class BookingManager {
 
     private List<Booking> bookings = new ArrayList<>();
 
-    public void createBooking(Room room, List<Guest> guests, LocalDate reservationStart, LocalDate reservationEnd, TypeOfVacation typeOfVacation) {
+    public void addBooking(Room room, List<Guest> guests, LocalDate reservationStart, LocalDate reservationEnd, TypeOfVacation typeOfVacation) {
 
         if (guests.isEmpty()) {
             System.out.println("Nezadán host");
@@ -31,7 +29,8 @@ public class ListOfBookings {
         bookings.add(new Booking(room, guests, reservationStart, reservationEnd, typeOfVacation));
 
     }
-    public void createBooking(Room room, List<Guest> guests) {
+
+    public void addBooking(Room room, List<Guest> guests) {
         LocalDate reservationStart = LocalDate.now();
         LocalDate reservationEnd = reservationStart.plusDays(6);
         TypeOfVacation typeOfVacation = TypeOfVacation.RECREATION;
@@ -53,6 +52,17 @@ public class ListOfBookings {
 
     }
 
+    public Booking getBooking(int index) {
+        return bookings.get(index);
+    }
+
+    public List<Booking> getBookings() {
+        return new ArrayList<>(bookings);
+    }
+
+    public void clearBookings() {
+        bookings.clear();
+    }
 
     public void printListOfBookings() {
         for (Booking booking : bookings) {
@@ -76,5 +86,27 @@ public class ListOfBookings {
             }
         }
         return isRoomAvailable;
+    }
+
+    public int getNumberOfWorkingBookings() {
+        int numberOfWorkingBookings = 0;
+        for (Booking booking : bookings) {
+            if (booking.getTypeOfVacation().equals(TypeOfVacation.COMPANY)) {
+                numberOfWorkingBookings = +1;
+            }
+        }
+        return numberOfWorkingBookings;
+    }
+
+    public double getAverageGuests() {
+        int totalGuests = 0;
+        if(bookings.isEmpty()) {
+            System.out.println("Neexistují žádné rezervace");
+        return 0;
+        }
+        for(Booking booking : bookings) {
+            totalGuests += booking.getNumberOfGuests();
+        }
+        return (double)totalGuests / bookings.size();
     }
 }

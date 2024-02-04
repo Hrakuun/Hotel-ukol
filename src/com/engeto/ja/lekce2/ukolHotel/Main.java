@@ -2,7 +2,9 @@ package com.engeto.ja.lekce2.ukolHotel;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args){
@@ -14,20 +16,36 @@ public class Main {
         System.out.println(jan);
         System.out.println();
 
-        Room room1 = new Room(1,1, true,true,BigDecimal.valueOf(1000));
-        Room room2 = new Room(2,1, true,true,BigDecimal.valueOf(1000));
-        Room room3 = new Room(3,3,false,true,BigDecimal.valueOf(2400));
+        List<Room> rooms = new ArrayList<>();
+        rooms.add(new Room(1,1, true,true,BigDecimal.valueOf(1000)));
+        rooms.add(new Room(2,1, true,true,BigDecimal.valueOf(1000)));
+        rooms.add(new Room(3,3,false,true,BigDecimal.valueOf(2400)));
 
-        System.out.println(room1);
-        System.out.println(room2);
-        System.out.println(room3);
+        for(Room room : rooms){
+            System.out.println(room);
+        }
         System.out.println();
 
-        ListOfBookings listOfBookings = new ListOfBookings();
-        listOfBookings.createBooking(room1,Arrays.asList(new Guest[]{adela}),LocalDate.of(2021,7,19),LocalDate.of(2021,7,26),TypeOfVacation.RECREATION);
-        listOfBookings.createBooking(room3,Arrays.asList(new Guest[]{adela,jan}),LocalDate.of(2021,9,1),LocalDate.of(2021,9,14),TypeOfVacation.RECREATION);
-        listOfBookings.createBooking(room2,Arrays.asList(new Guest[]{jan}));
+        BookingManager bookingManager = new BookingManager();
+        bookingManager.addBooking(rooms.get(0),Arrays.asList(new Guest[]{adela}),LocalDate.of(2021,7,19),LocalDate.of(2021,7,26),TypeOfVacation.RECREATION);
+        bookingManager.addBooking(rooms.get(2),Arrays.asList(new Guest[]{adela,jan}),LocalDate.of(2021,9,1),LocalDate.of(2021,9,14),TypeOfVacation.COMPANY);
+        bookingManager.addBooking(rooms.get(1),Arrays.asList(new Guest[]{jan}));
 
-        listOfBookings.printListOfBookings();
+        fillBookings(bookingManager,rooms);
+
+        bookingManager.printListOfBookings();
+
+    }
+
+    public static void fillBookings(BookingManager bookingManager, List<Room> rooms){
+        bookingManager.addBooking(rooms.get(2),Arrays.asList(new Guest[]{new Guest("Karel","Dvořák", LocalDate.of(1990,5,15))}),LocalDate.of(2023,6,1),LocalDate.of(2023,6,7),TypeOfVacation.COMPANY);
+        bookingManager.addBooking(rooms.get(1),Arrays.asList(new Guest[]{new Guest("Karel","Dvořák", LocalDate.of(1979,1,3))}),LocalDate.of(2023,7,18),LocalDate.of(2023,7,21),TypeOfVacation.RECREATION);
+
+        Guest karolina = new Guest("Karolína","Tmavá", LocalDate.of(1987,11,5));
+        for(int i = 0; i < 10;i++){
+            bookingManager.addBooking(rooms.get(1),Arrays.asList(new Guest[]{karolina}),LocalDate.of(2023,8,1).plusDays(2 * i),LocalDate.of(2023,8,2).plusDays(2 * i),TypeOfVacation.RECREATION);
+        }
+        bookingManager.addBooking(rooms.get(2),Arrays.asList(new Guest[]{karolina}),LocalDate.of(2023,8,1),LocalDate.of(2023,8,31),TypeOfVacation.COMPANY);
+
     }
 }
