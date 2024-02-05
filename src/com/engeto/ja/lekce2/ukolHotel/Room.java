@@ -51,7 +51,7 @@ public class Room {
         this.bedCount = bedCount;
     }
 
-    public boolean isHasBalcony() {
+    public boolean getHasBalcony() {
         return hasBalcony;
     }
 
@@ -59,7 +59,7 @@ public class Room {
         this.hasBalcony = hasBalcony;
     }
 
-    public boolean isHasSeaView() {
+    public boolean getHasSeaView() {
         return hasSeaView;
     }
 

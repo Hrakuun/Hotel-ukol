@@ -1,7 +1,9 @@
 package com.engeto.ja.lekce2.ukolHotel;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,14 +24,34 @@ public class Booking {
         this.typeOfVacation = typeOfVacation;
     }
 
-    public void printBooking(){
-        for(Guest guest : guests){
+    private String hasSeaView() {
+        if (room.getHasSeaView())
+            return "ano";
+        else
+            return "ne";
+    }
+
+    @Override
+    public String toString() {
+        return reservationStart.format(dateFormat) + " až " + reservationEnd.format(dateFormat) + ": " + guests.get(0) + "[" + guests.size() + ", " + hasSeaView() + "] za " + getPrice() + " Kč";
+    }
+
+    public void printBooking() {
+        for (Guest guest : guests) {
             System.out.print(guest.getFirstName() + " " + guest.getSurname() + ", ");
         }
         System.out.println("pokoj č. " + room.getRoomNo() + ", od " + reservationStart.format(dateFormat) + " do " + reservationEnd.format(dateFormat) + ", cena: " + room.getPricePerNight() + " Kč");
     }
-    public int getNumberOfGuests(){
+
+    public int getNumberOfGuests() {
         return guests.size();
+    }
+
+    private long getBookingLength() {
+        return ChronoUnit.DAYS.between(reservationStart,reservationEnd);
+    }
+    public BigDecimal getPrice(){
+        return room.getPricePerNight().multiply(BigDecimal.valueOf(getBookingLength()));
     }
 
     //region get/set

@@ -98,6 +98,20 @@ public class BookingManager {
         return numberOfWorkingBookings;
     }
 
+    public List<Booking> getRecreationBookings(){
+        List<Booking> recreationBookings = new ArrayList<>();
+        for(Booking booking : bookings){
+            if(recreationBookings.size() == 8){
+                break;
+            }
+            if(booking.getTypeOfVacation().equals(TypeOfVacation.RECREATION)){
+                recreationBookings.add(booking);
+            }
+
+        }
+        return new ArrayList<>(recreationBookings);
+    }
+
     public double getAverageGuests() {
         int totalGuests = 0;
         if(bookings.isEmpty()) {
@@ -109,4 +123,6 @@ public class BookingManager {
         }
         return (double)totalGuests / bookings.size();
     }
+
+
 }
